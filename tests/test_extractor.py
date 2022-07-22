@@ -43,6 +43,8 @@ def test_extractor_ctio():
             continue
         spectrum = Spectractor(file_name, output_directory, target_label, [xpos, ypos], disperser_label,
                                atmospheric_lines=True)
+        import time
+        time.sleep(5*60)
 #        assert spectrum.data is not None
 #        spectrum.my_logger.warning(f"\n\tQuantities to test:"
 #                                   f"\n\t\tspectrum.lambdas[0]={spectrum.lambdas[0]}"
