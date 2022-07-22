@@ -43,10 +43,11 @@ def test_extractor_ctio():
             continue
         import logging
         import requests
-        logging.warn(requests.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
+        session = requests.Session()
+        logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
         spectrum = Spectractor(file_name, output_directory, target_label, [xpos, ypos], disperser_label,
                                atmospheric_lines=True)
-        logging.warn(requests.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
+        logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
         import time
         time.sleep(5*60)
 #        assert spectrum.data is not None
