@@ -26,33 +26,15 @@ import unittest  # noqa: E402
 
 
 def test_extractor_ctio():
-    file_names = ['tests/data/reduc_20170530_134.fits']
-    output_directory = "./outputs"
-
-    logbook = LogBook(logbook='./ctiofulllogbook_jun2017_v5.csv')
-    load_config("./config/ctio.ini")
-    parameters.VERBOSE = True
-    parameters.DEBUG = True
-    parameters.CCD_REBIN = 1
-    apply_rebinning_to_parameters()
-
-    for file_name in file_names:
-        tag = file_name.split('/')[-1].replace("sim", "reduc")
-        disperser_label, target_label, xpos, ypos = logbook.search_for_image(tag)
-        if target_label is None or xpos is None or ypos is None:
-            continue
-        import logging
-        import requests
-        from requests.adapters import HTTPAdapter, Retry
-        session = requests.Session()
-        retries = Retry(total=1)
-        session.mount('https://', HTTPAdapter(max_retries=retries))
-        logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
-#        spectrum = Spectractor(file_name, output_directory, target_label, [xpos, ypos], disperser_label,
-#                               atmospheric_lines=True)
-        logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
-        import time
-        time.sleep(5*60)
+    import logging
+    import requests
+    from requests.adapters import HTTPAdapter, Retry
+    session = requests.Session()
+    retries = Retry(total=1)
+    session.mount('https://', HTTPAdapter(max_retries=retries))
+    import time
+    time.sleep(5*60)
+    logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
 #        assert spectrum.data is not None
 #        spectrum.my_logger.warning(f"\n\tQuantities to test:"
 #                                   f"\n\t\tspectrum.lambdas[0]={spectrum.lambdas[0]}"
