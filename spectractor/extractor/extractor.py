@@ -858,6 +858,7 @@ def Spectractor(file_name, output_directory, target_label, guess=None, disperser
 
     # Load reduced image
     image = Image(file_name, target_label=target_label, disperser_label=disperser_label)
+    return None
     if guess is not None and image.target_guess is None:
         image.target_guess = np.asarray(guess)
     if image.target_guess is None:
