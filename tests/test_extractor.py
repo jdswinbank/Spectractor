@@ -46,7 +46,7 @@ def test_extractor_ctio():
         from requests.adapters import HTTPAdapter, Retry
         session = requests.Session()
         retries = Retry(total=1)
-        session.mount('http://', HTTPAdapter(max_retries=retries))
+        session.mount('https://', HTTPAdapter(max_retries=retries))
         logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
 #        spectrum = Spectractor(file_name, output_directory, target_label, [xpos, ypos], disperser_label,
 #                               atmospheric_lines=True)
