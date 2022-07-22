@@ -41,8 +41,12 @@ def test_extractor_ctio():
         disperser_label, target_label, xpos, ypos = logbook.search_for_image(tag)
         if target_label is None or xpos is None or ypos is None:
             continue
+        import logging
+        import requests
+        logging.warn(requests.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
         spectrum = Spectractor(file_name, output_directory, target_label, [xpos, ypos], disperser_label,
                                atmospheric_lines=True)
+        logging.warn(requests.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
         import time
         time.sleep(5*60)
 #        assert spectrum.data is not None
