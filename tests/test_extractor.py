@@ -32,6 +32,7 @@ def test_extractor_ctio():
     session = requests.Session()
     retries = Retry(total=1)
     session.mount('https://', HTTPAdapter(max_retries=retries))
+    logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
     import time
     time.sleep(5*60)
     logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
