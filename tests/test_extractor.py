@@ -12,6 +12,8 @@ import sys  # noqa: E402
 import numpy as np  # noqa: E402
 import unittest  # noqa: E402
 
+#URL = "https://simbad.u-strasbg.fr/simbad/sim-script"
+URL = "https://www.google.com/"
 
 def test_with_retry():
     import logging
@@ -21,9 +23,9 @@ def test_with_retry():
     session = requests.Session()
     retries = Retry(total=1)
     session.mount('https://', HTTPAdapter(max_retries=retries))
-    logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
+    logging.warn(session.get(URL))
     time.sleep(5*60)
-    logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
+    logging.warn(session.get(URL))
 
 
 def test_without_retry():
@@ -32,9 +34,9 @@ def test_without_retry():
     import time
     from requests.adapters import HTTPAdapter, Retry
     session = requests.Session()
-    logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
+    logging.warn(session.get(URL))
     time.sleep(5*60)
-    logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
+    logging.warn(session.get(URL))
 
 
 if __name__ == "__main__":
