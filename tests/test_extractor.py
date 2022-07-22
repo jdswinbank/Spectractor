@@ -45,8 +45,8 @@ def test_extractor_ctio():
         import requests
         session = requests.Session()
         logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
-        spectrum = Spectractor(file_name, output_directory, target_label, [xpos, ypos], disperser_label,
-                               atmospheric_lines=True)
+#        spectrum = Spectractor(file_name, output_directory, target_label, [xpos, ypos], disperser_label,
+#                               atmospheric_lines=True)
         logging.warn(session.get("https://simbad.u-strasbg.fr/simbad/sim-script"))
         import time
         time.sleep(5*60)
